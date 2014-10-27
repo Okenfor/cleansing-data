@@ -41,4 +41,8 @@ names(data)[2:31] <- features[c(1:6,41:46,81:86,121:126,161:166),"V2"]
 names(data)[32]<- "subject"
 names(data)[33]<- "activity"
 
-means <- mean(data[,c(2:31)])
+#Melting data in order to calculate the average of each varaible for each activity and subject
+library(reshape2)
+dataMelt <- melt(data, id.vars = c(2:31), meausre.vars=c("activity","subject"), na.rm = TRUE)
+
+dataCast <- dcast(dataMelt, . ~ variable, mean)
