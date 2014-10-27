@@ -34,6 +34,7 @@ features <- read.table("~/R/UCI HAR Dataset/features.txt", quote="", stringsAsFa
 #naming variables of data
 names(data)[2:31] <- features[c(1:6,41:46,81:86,121:126,161:166),"V2"]
 names(data)[32]<- "activity"
-means <- mean(data)
+
+means <- mean(data[,c(2:31)])
 
 
