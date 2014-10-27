@@ -38,7 +38,7 @@ features <- read.table("features.txt", quote="", stringsAsFactors=FALSE)
 
 #naming variables of data
 names(data)[2:31] <- features[c(1:6,41:46,81:86,121:126,161:166),"V2"]
-names(data)[32]<- "activity"
-names(data)[33]<- "subject"
+names(data)[32]<- "subject"
+names(data)[33]<- "activity"
 
 means <- mean(data[,c(2:31)])
