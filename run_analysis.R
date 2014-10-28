@@ -45,4 +45,4 @@ names(data)[33]<- "activity"
 data.means <- aggregate(data[,2:31], by = data[c("subject","activity")], FUN=mean)
 
 #Writing data into a txt file
-write.table(data.means, file = "tidyData.txt")
+write.table(data.means, file = "tidyData.txt", row.name=FALSE)
