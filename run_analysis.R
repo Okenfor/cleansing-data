@@ -41,8 +41,8 @@ names(data)[2:31] <- features[c(1:6,41:46,81:86,121:126,161:166),"V2"]
 names(data)[32]<- "subject"
 names(data)[33]<- "activity"
 
-#Melting data in order to calculate the average of each varaible for each activity and subject
-library(reshape2)
-dataMelt <- melt(data, id.vars = c(2:31), meausre.vars=c("activity","subject"), na.rm = TRUE)
+#Calculating means for each variable over each subject and activity.
+data.means <- aggregate(data[,2:31], by = data[c("subject","activity")], FUN=mean)
 
-dataCast <- dcast(dataMelt, . ~ variable, mean)
+#Writing data into a txt file
+write.table(data.means, file = "tidyData.txt")
